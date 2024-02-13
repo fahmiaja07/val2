@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    #valentine-container {
+      margin-top: 50px;
+      background-color: #FFC0CB; /* Warna pink muda */
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    #gif {
+      max-width: 100%;
+      max-height: 100%;
+      width: 250px; /* Lebar maksimum */
+      height: 250px; /* Tinggi maksimum */
+    }
+
+    #question {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    #choices {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    #ya {
+      transition: transform 0.3s ease-in-out;
+      background-color: #FF69B4; /* Warna pink lebih tua */
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      color: #333;
+    }
+
+    #footer a {
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
+  <script>
+    let tidakCounter = 0;
+
+    function showResult(isYes) {
+      const resultElement = document.getElementById('result');
+      const yaButton = document.getElementById('ya');
+      const tidakButton = document.getElementById('tidak');
+      const questionElement = document.getElementById('question');
+
+      if (isYes) {
+        resultElement.innerHTML = 'Terimakasih mau menjadi valentine ku :D';
+        yaButton.innerHTML = 'Ya mau donggg :D';
+        tidakButton.style.display = 'none';
+        yaButton.style.display = 'none';
+        questionElement.style.display = 'none';
+      } else {
+        const choices = ['apa kamu yakin?', 'yakin nih?', 'masa sih?', 'Waduh Serius!?', 'yaahh :('];
+        const randomIndex = Math.floor(Math.random() * choices.length);
+        resultElement.innerHTML = choices[randomIndex];
+
+        // Mengubah ukuran yaButton seiring bertambahnya tidakCounter
+        tidakCounter++;
+        yaButton.style.transform = `scale(${1 + 0.1 * tidakCounter})`;
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="valentine-container">
+    <img id="gif" src="https://media.tenor.com/2csFlkJ3TyAAAAAi/tkthao219-bubududu.gif" alt="GIF Lucu">
+    <div id="question">Maukah kamu menjadi Valentine ku? :)</div>
+    <div id="choices">
+      <button id="ya" onclick="showResult(true)">Ya mau donggg ＼(^o^)／</button>
+      <button id="tidak" onclick="showResult(false)">Tidak ;(</button>
+    </div>
+    <div id="result"></div>
+    <div id="footer"><a href="https://shorturl.at/bHU68" target="_blank">Dibuat oleh Fahmi</a></div>
+  </div>
+</body>
+</html>
